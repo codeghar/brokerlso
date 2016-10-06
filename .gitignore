@@ -1,1 +1,7 @@
+build/
+dist/
+.eggs/
+*.egg-info/
 .idea/
+pytest-report.xml
+.tox/
