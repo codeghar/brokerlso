@@ -50,7 +50,7 @@ class RequestCmd:
         :param name: Name of exchange to create
         :type name: str
         :param type_: Type of exchange to create
-            Possible values are fanout, ...?
+            Possible values are: direct, fanout, topic?
         :type type_: str
         :param strict: Whether command should fail when unrecognized properties are provided
             Not used by QMFv2
@@ -116,7 +116,9 @@ class RequestCmd:
         """
         content = {"_object_id": {"_object_name": self.object_name},
                    "_method_name": "delete",
-                   "options": {"type": "queue", "name": name, "options": dict()}}
+                   "_arguments": {"type": "queue",
+                                  "name": name,
+                                  "options": dict()}}
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.method_properties
@@ -131,7 +133,7 @@ class RequestCmd:
         """
         content = {"_object_id": {"_object_name": self.object_name},
                    "_method_name": "delete",
-                   "options": {"type": "exchange", "name": name, "options": dict()}}
+                   "_arguments": {"type": "exchange", "name": name, "options": dict()}}
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.method_properties
@@ -146,7 +148,7 @@ class RequestCmd:
         """
         content = {"_object_id": {"_object_name": self.object_name},
                    "_method_name": "delete",
-                   "options": {"type": "binding", "name": name, "options": dict()}}
+                   "_arguments": {"type": "binding", "name": name, "options": dict()}}
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.method_properties

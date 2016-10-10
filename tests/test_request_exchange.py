@@ -48,7 +48,7 @@ class TestRequestExchange:
 
         expected_content = {"_object_id": {"_object_name": "org.apache.qpid.broker:broker:amqp-broker"},
                             "_method_name": "delete",
-                            "options": {"type": "exchange", "name": exchange, "options": dict()}}
+                            "_arguments": {"type": "exchange", "name": exchange, "options": dict()}}
         logger.debug("Expected content -> {0}".format(expected_content))
 
         expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
