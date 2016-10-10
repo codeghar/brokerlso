@@ -1,1 +1,10 @@
+build/
+.cache/
+.coverage
+dist/
+.eggs/
+*.egg-info/
 .idea/
+*.pyc
+pytest-report.xml
+.tox/
