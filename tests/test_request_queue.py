@@ -29,7 +29,7 @@ class TestRequestQueue:
                                                            "qpid.auto_delete_timeout": 10}}}
         logger.debug("Expected content -> {0}".format(expected_content))
 
-        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_query_request", "method": "request"}
+        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
         logger.debug("Expected properties -> {0}".format(expected_properties))
 
         assert content == expected_content
@@ -46,10 +46,10 @@ class TestRequestQueue:
 
         expected_content = {"_object_id": {"_object_name": "org.apache.qpid.broker:broker:amqp-broker"},
                             "_method_name": "delete",
-                            "options": {"type": "queue", "name": queue, "options": dict()}}
+                            "_arguments": {"type": "queue", "name": queue, "options": dict()}}
         logger.debug("Expected content -> {0}".format(expected_content))
 
-        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_query_request", "method": "request"}
+        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
         logger.debug("Expected properties -> {0}".format(expected_properties))
 
         assert content == expected_content
