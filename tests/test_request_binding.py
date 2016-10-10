@@ -29,7 +29,7 @@ class TestRequestBinding:
                                                            "qpid.auto_delete_timeout": 10}}}
         logger.debug("Expected content -> {0}".format(expected_content))
 
-        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_query_request", "method": "request"}
+        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
         logger.debug("Expected properties -> {0}".format(expected_properties))
 
         assert content == expected_content
@@ -49,7 +49,7 @@ class TestRequestBinding:
                             "options": {"type": "binding", "name": binding, "options": dict()}}
         logger.debug("Expected content -> {0}".format(expected_content))
 
-        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_query_request", "method": "request"}
+        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
         logger.debug("Expected properties -> {0}".format(expected_properties))
 
         assert content == expected_content
