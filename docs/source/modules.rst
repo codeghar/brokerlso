@@ -1,5 +1,5 @@
-brokerlso
-=========
+Modules
+=======
 
 .. toctree::
    :maxdepth: 4
