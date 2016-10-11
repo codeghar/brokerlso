@@ -8,4 +8,4 @@ install: pip install tox-travis travis-sphinx
 
 script:
   - tox
-  - travis-sphinx build
+  - pip install -e . && travis-sphinx build
