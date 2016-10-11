@@ -4,8 +4,10 @@ python:
   - "3.5"
   - "pypy"
 
-install: pip install tox-travis travis-sphinx
+install:
+  - pip install tox-travis
+#  - pip install travis-sphinx
 
 script:
   - tox
-  - pip install -e . && travis-sphinx build
+#  - pip install -e . && travis-sphinx build
