@@ -3,8 +3,9 @@ language: python
 python:
   - "3.5"
   - "pypy"
-  - "pypy3"
 
-install: pip install tox-travis
+install: pip install tox-travis travis-sphinx
 
-script: tox
+script:
+  - tox
+  - travis-sphinx build
