@@ -72,3 +72,24 @@ class TestRequestQueue:
         assert content == expected_content
 
         assert properties == expected_properties
+
+    @pytest.mark.list
+    def test_purge_queue_myqueue(self):
+        req = RequestCmd()
+        queue = "myqueue"
+        content, properties = req.purge_queue(queue)
+        logger.debug("Content -> {0}".format(content))
+        logger.debug("Properties -> {0}".format(properties))
+
+        expected_content = {"_object_id": {"_object_name": "org.apache.qpid.broker:broker:amqp-broker"},
+                            "_method_name": "purge",
+                            "_arguments": {"type": "queue",
+                                           "name": queue}}
+        logger.debug("Expected content -> {0}".format(expected_content))
+
+        expected_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_method_request", "method": "request"}
+        logger.debug("Expected properties -> {0}".format(expected_properties))
+
+        assert content == expected_content
+
+        assert properties == expected_properties
