@@ -32,14 +32,20 @@ class Example1(MessagingHandler):
         logger.debug("url {0}".format(self.url))
 
         reqcmd = RequestCmd()
-        self.request_messages = [reqcmd.list_queues(),
-                                 reqcmd.create_queue("MYFIRSTQUEUE"),
-                                 reqcmd.list_queues(),
-                                 reqcmd.delete_queue("MYFIRSTQUEUE"),
-                                 reqcmd.list_exchanges(),
-                                 reqcmd.create_exchange("MYFIRSTEXCAHNGE"),
-                                 reqcmd.list_exchanges(),
-                                 reqcmd.delete_exchange("MYFIRSTEXCAHNGE")]
+        myfirstqueue = "MYFIRSTQUEUE"
+        myfirstexchange = "MYFIRSTEXCAHNGE"
+        self.request_messages = [
+            reqcmd.list_queues(),
+            reqcmd.create_queue(myfirstqueue),
+            reqcmd.list_queues(),
+            reqcmd.purge_queue(myfirstqueue),
+            reqcmd.list_queues(),
+            reqcmd.delete_queue(myfirstqueue),
+            reqcmd.list_exchanges(),
+            reqcmd.create_exchange(myfirstexchange),
+            reqcmd.list_exchanges(),
+            reqcmd.delete_exchange(myfirstexchange),
+        ]
         logger.debug("requests {0}".format(self.request_messages))
 
     def on_start(self, event):

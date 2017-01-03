@@ -15,7 +15,7 @@ class RequestCmd:
         self.query_properties = {"x-amqp-0-10.app-id": "qmf2", "qmf.opcode": "_query_request", "method": "request"}
         logger.debug("Message properties -> {0}".format(self.query_properties))
 
-    def create_queue(self, name, strict=True, auto_delete=False, auto_delete_timeout=10):
+    def create_queue(self, name, strict=True, auto_delete=False, auto_delete_timeout=0):
         """Create message content and properties to create queue with QMFv2
 
         :param name: Name of queue to create
@@ -118,7 +118,7 @@ class RequestCmd:
                    "_method_name": "delete",
                    "_arguments": {"type": "queue",
                                   "name": name,
-                                  "options": dict()}}
+                                  "options": dict()}}  # "A nested map with the key options. This is presently unused."
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.method_properties
@@ -133,7 +133,8 @@ class RequestCmd:
         """
         content = {"_object_id": {"_object_name": self.object_name},
                    "_method_name": "delete",
-                   "_arguments": {"type": "exchange", "name": name, "options": dict()}}
+                   "_arguments": {"type": "exchange", "name": name,
+                                  "options": dict()}}  # "A nested map with the key options. This is presently unused."
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.method_properties
@@ -174,3 +175,20 @@ class RequestCmd:
         logger.debug("Message content -> {0}".format(content))
 
         return content, self.query_properties
+
+    def purge_queue(self, name):
+        """Create message content and properties to purge queue with QMFv2
+
+        :param name: Name of queue to purge
+        :type name: str
+
+        :returns: Tuple containing content and method properties
+        """
+        content = {"_object_id": {"_object_name": "org.apache.qpid.broker:queue:{0}".format(name)},
+                   "_method_name": "purge",
+                   "_arguments": {"type": "queue",
+                                  "name": name,
+                                  "filter": dict()}}
+        logger.debug("Message content -> {0}".format(content))
+
+        return content, self.method_properties
