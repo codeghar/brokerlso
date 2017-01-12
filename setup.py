@@ -13,7 +13,7 @@ html_docs_static = glob.glob("docs/build/html/_static/*.*")
 
 setup(
     name="brokerlso",
-    version="0.0.1",
+    version="0.0.2",
     description="A small Python library to craft command messages for Apache Qpid Broker.",
     long_description=readme,
     author="Hamza Sheikh",
@@ -35,6 +35,7 @@ setup(
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
     ],
     install_requires=[],
     setup_requires=['pytest-runner'],
